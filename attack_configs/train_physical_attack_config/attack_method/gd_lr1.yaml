@@ -1,0 +1,4 @@
+name: gd
+lr: 1
+batch_size: 64
+alpha: Null

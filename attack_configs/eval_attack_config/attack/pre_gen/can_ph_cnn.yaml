@@ -1,0 +1,7 @@
+type: pre_gen
+obs:
+  agentview_image:
+    path: data/outputs/attack_train/noises/can_ph_cnn_agentview.npy
+  robot0_eye_in_hand_image:
+    path: data/outputs/attack_train/noises/can_ph_cnn_eyeinhand.npy
+eps: 0.03

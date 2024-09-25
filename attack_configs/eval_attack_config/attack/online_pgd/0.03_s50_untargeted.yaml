@@ -1,0 +1,5 @@
+type: random_step
+alpha: 0.001875
+num_steps: 50
+eps: 0.03
+ntarget: Null

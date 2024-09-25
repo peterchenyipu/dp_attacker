@@ -1,0 +1,15 @@
+type: full_chain
+alpha: 0.008
+num_steps: 5
+eps: 0.06
+use_ddim: true
+scheduler_steps: 8
+ntarget: 1
+
+# type: full_chain
+# alpha: 0.001875
+# num_steps: 50
+# eps: 0.03
+# use_ddim: true
+# scheduler_steps: 16
+# ntarget: 1

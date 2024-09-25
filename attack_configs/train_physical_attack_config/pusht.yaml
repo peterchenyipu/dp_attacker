@@ -1,0 +1,87 @@
+attack_method:
+  name: gd
+  lr: 1
+  batch_size: 64
+
+ckpt:
+  task_name: pusht
+  backbone_arch: CNN
+  train_data_type: na
+  path: data/experiments/image/pusht/diffusion_policy_cnn/train_0/checkpoints/latest.ckpt
+
+attack_config:
+  shape: [3, 21, 21]
+  random_start: True
+  ntarget: 1
+  attacked_obs:
+    image:
+      train_tf:
+        _target_: diffusion_policy.attack.CustomRandomAffine.CustomRandomAffine
+        degrees: [-20, 20]
+        # scale: [0.1, 0.1]
+        translate: [-0.4, 0.4, -0.4, 0.4]
+        shear: [-50, 50, -50, 50]
+        p: 1.
+      val_tf:
+        _target_: diffusion_policy.attack.CustomRandomAffine.CustomRandomAffine
+        degrees: 0
+        # scale: [0.1, 0.1]
+        translate: [-0.4, -0.4, -0.4, -0.4]
+        p: 1.
+        
+
+
+task_name: ${ckpt.task_name}
+arch: ${ckpt.backbone_arch}
+dataset_type: ${ckpt.train_data_type}
+attack_type: ${attack_method.name}
+# alpha: ${attack_method.alpha}
+batch_size: ${attack_method.batch_size}
+name: ${now:%Y.%m.%d-%H.%M.%S}_${task_name}_${dataset_type}_${arch}
+dataloader:
+  batch_size: ${attack_method.batch_size}
+  num_workers: 16
+  shuffle: true
+  pin_memory: true
+  persistent_workers: false
+val_dataloader:
+  batch_size: ${attack_method.batch_size}
+  num_workers: 16
+  shuffle: false
+  pin_memory: true
+  persistent_workers: false
+training:
+  device: cuda:0
+  seed: 42
+  debug: false
+  resume: true
+  num_epochs: 51
+  rollout_every: 25
+  val_every: 5
+  sample_every: 5
+  checkpoint_every: 100
+  max_train_steps_per_e: null
+  max_val_steps_per_e: null
+  max_train_steps: null
+  tqdm_interval_sec: 1.0
+logging:
+  project: physical_attack_diffusion_policy_train
+  resume: true
+  mode: online
+  name: ${name}
+  tags:
+  - ${task_name}
+  - ${arch}_${dataset_type}
+  - ${attack_type}
+  id: null
+  group: null
+
+
+hydra:
+  job:
+    override_dirname: ${task_name}
+  run:
+    dir: data/outputs/physical_attack_train/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}_${attack_type}
+  sweep:
+    dir: data/outputs/physical_attack_train/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}_${attack_type}
+    subdir: ${hydra.job.num}

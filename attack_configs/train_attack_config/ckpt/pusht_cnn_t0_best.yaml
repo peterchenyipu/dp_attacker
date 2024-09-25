@@ -1,0 +1,4 @@
+task_name: pusht
+backbone_arch: CNN
+
+path: /home/peteop/Documents/flair_works/attack_diffusion_policy/data/experiments/image/pusht/diffusion_policy_cnn/train_0/checkpoints/epoch=0500-test_mean_score=0.884.ckpt

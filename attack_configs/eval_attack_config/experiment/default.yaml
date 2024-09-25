@@ -1,0 +1,8 @@
+# @package _global_
+defaults:
+  # - override /attack: pre_gen_attack
+  - override /attack/online_pgd: 0.03_s20_untargeted
+
+# attack:
+#   pre_gen_attack:
+#     obs: Null

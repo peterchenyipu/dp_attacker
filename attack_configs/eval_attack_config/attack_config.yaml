@@ -1,0 +1,34 @@
+defaults:
+  - _self_ 
+  - attack: online_attack
+  - ckpt: example_ckpt
+
+task_name: ${ckpt.task_name}
+arch: ${ckpt.backbone_arch}
+attack_type: ${attack.attack_type}
+name: ${now:%Y.%m.%d-%H.%M.%S}_${task_name}_${arch}
+device: "cuda:0"
+
+log_wandb: True
+logging:
+  project: c_attack_diffusion_policy_eval
+  resume: True
+  mode: online
+  name: ${name}
+  tags: ["${task_name}", "${arch}", "${attack_type}"]
+  id: null
+  group: null
+
+
+multi_run:
+  run_dir: data/outputs/eval/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}
+  wandb_name_base: ${name}
+
+hydra:
+  job:
+    override_dirname: ${task_name}
+  run:
+    dir: data/outputs/eval/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}_${attack_type}
+  sweep:
+    dir: data/outputs/eval/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}_${attack_type}
+    subdir: ${hydra.job.num}

@@ -1,0 +1,5 @@
+task_name: SQUARE
+backbone_arch: TF
+ds_type: mh
+
+path: data/experiments/image/square_mh/diffusion_policy_transformer/train_0/checkpoints/epoch=3050-test_mean_score=1.000.ckpt

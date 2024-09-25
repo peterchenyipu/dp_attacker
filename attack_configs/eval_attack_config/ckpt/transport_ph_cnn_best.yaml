@@ -1,0 +1,5 @@
+task_name: TRANSPORT
+backbone_arch: CNN
+ds_type: ph
+
+path: data/experiments/image/transport_ph/diffusion_policy_cnn/train_0/checkpoints/epoch=2750-test_mean_score=1.000.ckpt

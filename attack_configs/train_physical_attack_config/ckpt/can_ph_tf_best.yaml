@@ -1,0 +1,5 @@
+task_name: CAN
+backbone_arch: TF
+ds_type: ph
+
+path: data/experiments/image/can_ph/diffusion_policy_transformer/train_0/checkpoints/epoch=0950-test_mean_score=1.000.ckpt

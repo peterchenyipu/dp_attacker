@@ -1,0 +1,5 @@
+task_name: pusht
+backbone_arch: CNN
+train_data_type: na
+
+path: data/experiments/image/pusht/diffusion_policy_cnn/train_0/checkpoints/latest.ckpt

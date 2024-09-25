@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - override /attack: pre_gen_attack
+  - override /attack/pre_gen_attack: dummy.yaml
+  - override /ckpt: can_mh_cnn_t0_latest
+
+# attack:
+#   pre_gen_attack:
+#     obs: Null

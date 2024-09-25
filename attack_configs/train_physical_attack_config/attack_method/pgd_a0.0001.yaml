@@ -1,0 +1,3 @@
+name: pgd
+alpha: 0.0001
+batch_size: 64

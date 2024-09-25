@@ -1,0 +1,7 @@
+type: pre_gen
+obs:
+  agentview_image:
+    path: ???
+  robot0_eye_in_hand_image:
+    path: ???
+eps: ???

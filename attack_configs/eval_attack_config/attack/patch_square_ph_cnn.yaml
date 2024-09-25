@@ -1,0 +1,5 @@
+attack_type: physical_patch
+
+patch_size: 0.06
+mode: pre_gen
+path: pre_trained_physical_patches/square_ph_cnn_us.png

@@ -1,0 +1,14 @@
+attack_type: direct_patched
+
+shape: [3, 21, 21]
+mode: pre_gen
+path: outputs/physical_attack_train/2024.05.06/14.23.53_robomimic_CAN_CNN_pgd/e=19_b=927.npy
+attacked_obs:
+  image:
+    val_tf:
+      _target_: diffusion_policy.attack.CustomRandomAffine.CustomRandomAffine
+      degrees: [-20, 20]
+      # scale: [0.1, 0.1]
+      translate: [-0.4, 0.4, -0.4, 0.4]
+      shear: [-50, 50, -50, 50]
+      p: 1.

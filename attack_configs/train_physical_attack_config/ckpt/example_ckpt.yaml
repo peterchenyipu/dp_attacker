@@ -1,0 +1,5 @@
+task_name: robomimic_CAN
+backbone_arch: CNN
+train_data_type: mh
+
+path: data/experiments/image/can_mh/diffusion_policy_cnn/train_0/checkpoints/latest.ckpt

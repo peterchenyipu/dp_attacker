@@ -1,0 +1,4 @@
+task_name: LIFT
+backbone_arch: CNN
+
+path: data/experiments/image/lift_mh/diffusion_policy_cnn/train_0/checkpoints/latest.ckpt

@@ -1,0 +1,5 @@
+task_name: PushT
+backbone_arch: TF
+ds_type: na
+
+path: data/experiments/image/pusht/diffusion_policy_transformer/train_0/checkpoints/epoch=0100-test_mean_score=0.748.ckpt

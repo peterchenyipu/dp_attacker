@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - override /attack: pre_gen_attack
+  - override /attack/pre_gen: pusht_t0_best
+  - override /ckpt: pusht_cnn_t0_best
+
+# attack:
+#   pre_gen_attack:
+#     obs: Null

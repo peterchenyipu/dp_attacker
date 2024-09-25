@@ -1,0 +1,79 @@
+defaults:
+  - attack_method: pgd_0.03_untargeted
+  - ckpt: example_ckpt
+  - _self_
+
+# task info
+task_name: ${ckpt.task_name}
+arch: ${ckpt.backbone_arch}
+dataset_type: ${ckpt.ds_type}
+
+attack_type: ${attack_method.name}
+eps: ${attack_method.eps}
+alpha: ${attack_method.alpha}
+batch_size: ${attack_method.batch_size}
+
+name: ${now:%Y.%m.%d-%H.%M.%S}_${task_name}_${dataset_type}_${arch}
+
+
+dataloader:
+  batch_size: ${attack_method.batch_size}
+  num_workers: 16
+  shuffle: True
+  pin_memory: True
+  persistent_workers: False
+
+val_dataloader:
+  batch_size: ${attack_method.batch_size}
+  num_workers: 16
+  shuffle: False
+  pin_memory: True
+  persistent_workers: False
+
+training:
+  device: "cuda:0"
+  seed: 42
+  debug: False
+  resume: True
+  # optimization
+  num_epochs: 11
+  # training loop control
+  # in epochs
+  rollout_every: 10
+  val_every: 10
+  sample_every: 10
+
+  # checkpoint control in steps
+  checkpoint_every: 100
+  
+  # steps per epoch
+  max_train_steps_per_e: null
+  max_val_steps_per_e: null
+  # training total steps control
+  max_train_steps: null
+  # misc
+  tqdm_interval_sec: 1.0
+
+
+# defer logging creating at runtime
+logging:
+  project: c_attack_diffusion_policy_train
+  resume: True
+  mode: online
+  name: ${name}
+  tags: ["${task_name}", "${arch}_${dataset_type}", "eps=${eps}", "${attack_type}"]
+  # config:
+  #   batch_size: ${attack_method.batch_size}
+  #   eps: ${attack_method.eps}
+  #   alpha: ${attack_method.alpha}
+  id: null
+  group: null
+
+hydra:
+  job:
+    override_dirname: ${task_name}
+  run:
+    dir: data/outputs/attack_train/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}_${attack_type}
+  sweep:
+    dir: data/outputs/attack_train/${now:%Y.%m.%d}/${now:%H.%M.%S}_${task_name}_${arch}_${attack_type}
+    subdir: ${hydra.job.num}

@@ -1,0 +1,5 @@
+task_name: TOOLHANG
+backbone_arch: TF
+ds_type: ph
+
+path: data/experiments/image/tool_hang_ph/diffusion_policy_transformer/train_0/checkpoints/epoch=0100-test_mean_score=0.773.ckpt

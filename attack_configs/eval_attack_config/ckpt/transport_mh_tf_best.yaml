@@ -1,0 +1,5 @@
+task_name: TRANSPORT
+backbone_arch: TF
+ds_type: mh
+
+path: data/experiments/image/transport_mh/diffusion_policy_transformer/train_0/checkpoints/epoch=1750-test_mean_score=0.727.ckpt

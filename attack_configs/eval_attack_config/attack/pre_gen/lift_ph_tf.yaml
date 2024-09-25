@@ -1,0 +1,7 @@
+type: pre_gen
+obs:
+  agentview_image:
+    path: data/outputs/attack_train/noises/lift_ph_tf_agentview.npy
+  robot0_eye_in_hand_image:
+    path: data/outputs/attack_train/noises/lift_ph_tf_eyeinhand.npy
+eps: 0.03

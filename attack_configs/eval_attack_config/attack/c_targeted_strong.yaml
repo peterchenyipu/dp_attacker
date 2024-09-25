@@ -1,0 +1,11 @@
+defaults:
+  # - _self_
+  - online_pgd: strong_targeted
+  - _self_
+
+# override by selecting a file in online_pgd adding sth like: 'attack/online_pgd=0.03_s20_untargeted'
+
+eps: ${attack.online_pgd.eps}
+alpha: ${attack.online_pgd.alpha}
+num_steps: ${attack.online_pgd.num_steps}
+attack_type: online

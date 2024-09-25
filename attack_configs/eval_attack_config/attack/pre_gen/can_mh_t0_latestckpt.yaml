@@ -1,0 +1,7 @@
+type: pre_gen
+obs:
+  agentview_image:
+    path: outputs/2024-04-16/17-49-50/noise_key='agentview_image'_batch_idx=927.npy
+  robot0_eye_in_hand_image:
+    path: outputs/2024-04-16/17-49-50/noise_key='robot0_eye_in_hand_image'_batch_idx=927.npy
+eps: 0.02

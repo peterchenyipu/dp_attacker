@@ -1,0 +1,7 @@
+defaults:
+  - pre_gen: can_mh_t0_latestckpt
+
+# override by selecting a file in pre_gen adding sth like: 'attack/pre_gen=pusht_t0_best'
+
+attack_type: pre_gen
+eps: ${attack.pre_gen.eps}
